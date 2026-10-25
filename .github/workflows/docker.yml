@@ -1,0 +1,104 @@
+# Builds the site image, smoke-tests it, publishes it to the GitHub Container Registry
+# (ghcr.io/dwzg/radom) and optionally tells Portainer to redeploy.
+#
+# Tags pushed:
+#   sha-<short-sha>   every push to main and every v* tag
+#   latest            pushes to main
+#   1.2.0, 1.2        git tags like v1.2.0
+# Pull requests only build and test.
+#
+# Optional secret (Settings → Secrets and variables → Actions):
+#   PORTAINER_WEBHOOK_URL   Portainer stack/service webhook. If set, the deploy job calls it
+#                           after `latest` is pushed. If unset, the deploy step is skipped.
+
+name: Docker image
+
+on:
+  push:
+    branches: [main]
+    tags: ["v*"]
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: docker-${{ github.ref }}
+  cancel-in-progress: true
+
+env:
+  IMAGE: ghcr.io/dwzg/radom
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      - name: Build image for testing
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: rdm-site:test
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      - name: Smoke test
+        run: |
+          docker run -d --name site --read-only --tmpfs /tmp rdm-site:test
+          for i in $(seq 1 10); do
+            docker exec site wget -qO- http://127.0.0.1:8080/healthz && break
+            sleep 1
+          done
+          docker exec site wget -qO- http://127.0.0.1:8080/ | grep -q "<title>RDM"
+          docker rm -f site
+
+      - name: Image tags
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.IMAGE }}
+          tags: |
+            type=sha
+            type=raw,value=latest,enable={{is_default_branch}}
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+
+      - name: Log in to GitHub Container Registry
+        if: github.event_name != 'pull_request'
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Push image
+        if: github.event_name != 'pull_request'
+        uses: docker/build-push-action@v6
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha
+
+  deploy:
+    needs: build
+    if: github.ref == 'refs/heads/main' && github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      PORTAINER_WEBHOOK_URL: ${{ secrets.PORTAINER_WEBHOOK_URL }}
+    steps:
+      - name: Trigger Portainer redeploy
+        if: env.PORTAINER_WEBHOOK_URL != ''
+        run: |
+          curl -fsS -X POST --retry 3 --retry-delay 5 "$PORTAINER_WEBHOOK_URL" -o /dev/null
+          echo "Portainer redeploy triggered"
+      - name: Skip (no webhook configured)
+        if: env.PORTAINER_WEBHOOK_URL == ''
+        run: echo "PORTAINER_WEBHOOK_URL is not set, skipping redeploy."
