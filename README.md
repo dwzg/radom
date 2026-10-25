@@ -1,7 +1,8 @@
-# RDM Radom — teaser site
+# RDM — modular car concept site
 
-Static teaser website for Radom (RDM), a Polish brand of modular cars. It introduces the three
-models (RDM 1989, RDM 1683, RDM 966) without prices or a configurator.
+Static website for RDM, a fictional design concept for affordable, modular cars inspired by Poland.
+It presents three concept models (RDM 1989, RDM 1683, RDM 966). RDM is not a real company, the cars
+don't exist and nothing is for sale. All images are AI-generated. The page has no forms.
 
 ## Run with Docker
 
@@ -61,9 +62,8 @@ No build step: open `index.html`, or run `python3 -m http.server` in this folder
 
 - `index.html` — page content and sections
 - `css/style.css` — styles (responsive, respects reduced motion)
-- `js/main.js` — model cards, exploded-view hotspots, sign-up form
+- `js/main.js` — model cards, exploded-view hotspots, navigation
 - `img/` — AI-generated photos (WebP), made with the prompts in `docs/image-prompts.md`
 - `Dockerfile`, `nginx.conf`, `docker-compose.yml` — container hosting
 - `.github/workflows/docker.yml`, `deploy/docker-compose.yml` — image release to GHCR and Portainer stack
 
-The "Keep me posted" form has no backend yet; it only shows a thank-you message.
