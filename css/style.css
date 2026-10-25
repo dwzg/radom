@@ -307,7 +307,7 @@ p { margin: 0; }
   .nav__links a { padding: 14px 0; border-bottom: 1px solid var(--line); font-size: 1.05rem; }
   .nav__links a::after { display: none; }
   .nav.is-open .nav__links { transform: none; }
-  .nav__inner > .btn { margin-left: auto; }
+  .nav__toggle { margin-left: auto; }
   .nav__toggle {
     display: grid; gap: 6px; width: 40px; height: 40px; place-content: center;
     background: none; border: 0; cursor: pointer; padding: 0;

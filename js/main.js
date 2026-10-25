@@ -43,14 +43,9 @@
         <p class="model__desc">${m.desc}</p>
         <div class="model__foot">
           <span class="model__tag">${m.seats} · ${m.length} · Coming soon</span>
-          <a href="#notify" class="btn btn--small btn--ghost" data-model="${id}">Get notified</a>
         </div>
       </div>
     </article>`).join('');
-  cards.addEventListener('click', e => {
-    const a = e.target.closest('[data-model]');
-    if (a) $('driveModel').value = a.dataset.model;
-  });
 
   /* ---------- Test drive form ---------- */
   const form = $('driveForm');
