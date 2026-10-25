@@ -113,9 +113,9 @@ p { margin: 0; }
 .hero__lead { font-size: clamp(1.05rem, 1.6vw, 1.25rem); max-width: 46ch; margin-top: 28px; color: #3d3d3a; }
 .hero__cta { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 32px; }
 .hero__car { position: relative; margin-top: clamp(0px, 3vw, 24px); }
-@media (min-width: 1100px) { .hero__car { margin-top: -170px; } .hero__car svg { width: 820px; } }
 .hero__car svg { width: min(1000px, 100%); margin-left: auto; animation: drive-in 1.6s var(--ease) both .2s; }
 .hero__car .spin { animation: spin 1.6s var(--ease) both .2s; }
+@media (min-width: 1100px) { .hero__car { margin-top: -150px; } .hero__car svg { width: 720px; } }
 @keyframes drive-in { from { transform: translateX(40%); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes spin { from { transform: rotate(-540deg); } to { transform: none; } }
 
