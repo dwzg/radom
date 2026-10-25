@@ -6,6 +6,7 @@ No build step: open `index.html` in a browser, or serve the folder (`python3 -m 
 
 - `index.html` — page content and sections
 - `css/style.css` — styles (responsive, respects reduced motion)
-- `js/main.js` — SVG car renderer, exploded "modules" view, configurator, test-drive form
+- `js/main.js` — configurator, model cards, exploded-view hotspots, test-drive form
+- `img/` — AI-generated photos (WebP), made with the prompts in `docs/image-prompts.md`
 
 All prices, specs and figures are placeholders. The test-drive form has no backend yet.

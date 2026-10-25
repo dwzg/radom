@@ -23,6 +23,7 @@
     <nav class="nav__links" aria-label="Main">
       <a href="#modular">Modular</a>
       <a href="#models">Models</a>
+      <a href="#design">Design</a>
       <a href="#configure">Configure</a>
       <a href="#upgrade">Upgrade</a>
       <a href="#radom">Radom</a>
@@ -36,26 +37,26 @@
 
   <!-- HERO -->
   <section class="hero">
-    <div class="hero__bg" aria-hidden="true">RDM</div>
+    <img class="hero__img" src="img/hero.webp" alt="A crimson RDM 1989 on wet cobblestones in Warsaw at dusk" width="1376" height="768" fetchpriority="high">
+    <div class="hero__shade" aria-hidden="true"></div>
     <div class="wrap hero__inner">
-      <p class="eyebrow">Radom Motors · Made in Poland</p>
+      <p class="eyebrow eyebrow--light">Radom Motors · Made in Poland</p>
       <h1 class="hero__title">Built<br>to <em>change.</em></h1>
       <p class="hero__lead">Affordable, good-looking cars made of modules. Swap the engine, wheels, roof or interior whenever your life does — and keep the car you love.</p>
       <div class="hero__cta">
         <a href="#configure" class="btn">Build your RDM</a>
-        <a href="#modular" class="btn btn--ghost">See how it works</a>
+        <a href="#modular" class="btn btn--outline-light">See how it works</a>
       </div>
     </div>
-    <div class="hero__car wrap" id="heroCar" aria-hidden="true"></div>
-    <div class="wrap">
-      <dl class="hero__stats">
-        <div><dt>From</dt><dd>79 900 zł</dd></div>
-        <div><dt>Swappable modules</dt><dd>7</dd></div>
-        <div><dt>Engine swap</dt><dd>2 h</dd></div>
-        <div><dt>Of the car you keep</dt><dd>90%</dd></div>
-      </dl>
-    </div>
   </section>
+  <div class="wrap">
+    <dl class="hero__stats">
+      <div><dt>From</dt><dd>79 900 zł</dd></div>
+      <div><dt>Swappable modules</dt><dd>7</dd></div>
+      <div><dt>Engine swap</dt><dd>2 h</dd></div>
+      <div><dt>Of the car you keep</dt><dd>90%</dd></div>
+    </dl>
+  </div>
 
   <!-- MODULAR / EXPLODED -->
   <section class="section section--dark" id="modular">
@@ -66,17 +67,22 @@
         <p class="lead">Every RDM is built on the same bolt-together platform. Modules connect with standard mounts and a single data plug, so an upgrade is a service appointment — not a new car.</p>
       </div>
       <div class="explode">
-        <div class="explode__stage">
-          <div id="explodeCar"></div>
-          <button class="btn btn--light explode__btn" id="explodeBtn" aria-pressed="false">Take it apart</button>
-        </div>
+        <figure class="explode__stage">
+          <img src="img/exploded.webp" alt="Exploded view of an RDM 1989: body, roof, front and rear fascias, seat tray, battery floor, motor and wheels pulled apart" width="1376" height="768" loading="lazy">
+          <span class="hotspot" data-mod="1" style="--x:67.6%;--y:66.4%">1</span>
+          <span class="hotspot" data-mod="2" style="--x:52.3%;--y:76%">2</span>
+          <span class="hotspot" data-mod="3" style="--x:42.9%;--y:62.5%">3</span>
+          <span class="hotspot" data-mod="4" style="--x:27.3%;--y:74.9%">4</span>
+          <span class="hotspot" data-mod="5" style="--x:16.7%;--y:50.8%">5</span>
+          <span class="hotspot" data-mod="6" style="--x:55.2%;--y:10.4%">6</span>
+        </figure>
         <ol class="explode__list">
-          <li><b>Powertrain</b><span>Petrol, hybrid or electric. Same mounts, swapped in about two hours.</span></li>
-          <li><b>Energy floor</b><span>Fuel tank or battery pack slides into the flat floor.</span></li>
-          <li><b>Interior</b><span>Seats, dash and screen lift out as one tray. Go from 5 seats to cargo.</span></li>
-          <li><b>Corners</b><span>Wheels, brakes and suspension per corner. City comfort or gravel ready.</span></li>
-          <li><b>Fascias</b><span>Front and rear bumpers with lights. Refresh the face, not the car.</span></li>
-          <li><b>Roof</b><span>Steel, panoramic glass, rails or solar. Six bolts, one afternoon.</span></li>
+          <li data-mod="1" tabindex="0"><b>Powertrain</b><span>Petrol, hybrid or electric. Same mounts, swapped in about two hours.</span></li>
+          <li data-mod="2" tabindex="0"><b>Energy floor</b><span>Fuel tank or battery pack slides into the flat floor.</span></li>
+          <li data-mod="3" tabindex="0"><b>Interior</b><span>Seats, dash and screen lift out as one tray. Go from 5 seats to cargo.</span></li>
+          <li data-mod="4" tabindex="0"><b>Corners</b><span>Wheels, brakes and suspension per corner. City comfort or gravel ready.</span></li>
+          <li data-mod="5" tabindex="0"><b>Fascias</b><span>Front and rear bumpers with lights. Refresh the face, not the car.</span></li>
+          <li data-mod="6" tabindex="0"><b>Roof</b><span>Steel, panoramic glass, rails or solar. Six bolts, one afternoon.</span></li>
         </ol>
       </div>
     </div>
@@ -96,6 +102,33 @@
     </div>
   </section>
 
+  <!-- DESIGN -->
+  <section class="section section--dark" id="design">
+    <div class="wrap">
+      <div class="section__head section__head--row">
+        <div>
+          <p class="eyebrow">Design</p>
+          <h2>Retro where it counts.<br>Modern where it matters.</h2>
+        </div>
+        <p class="lead">We grew up in the back seats of Polonezes and Maluchs. The RDM keeps the honest, angular lines of that era — and adds pixel-LED lights, recycled wool seats and a screen that knows when to stay quiet.</p>
+      </div>
+      <div class="gallery">
+        <figure class="gallery__big">
+          <img src="img/interior.webp" alt="RDM interior with grey wool seats, a two-spoke wheel, toggle switches and a panoramic roof" width="1200" height="896" loading="lazy">
+          <figcaption><b>Interior</b> Real switches, wool seats, a panoramic roof and a birch forest view.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/detail-lights.webp" alt="Close-up of square pixel-LED headlights on a red RDM" width="1024" height="1024" loading="lazy">
+          <figcaption><b>Pixel lights</b> Four square LED lamps behind one glass panel.</figcaption>
+        </figure>
+        <figure>
+          <img src="img/detail-wheel.webp" alt="Dark 18-inch wheel with red brake caliper on a navy RDM 1683" width="1024" height="1024" loading="lazy">
+          <figcaption><b>Sport corners</b> 18" wheels, red calipers, lowered springs.</figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
   <!-- CONFIGURATOR -->
   <section class="section section--tint" id="configure">
     <div class="wrap">
@@ -105,7 +138,8 @@
       </div>
       <div class="config">
         <div class="config__stage">
-          <div class="config__car" id="configCar"></div>
+          <div class="config__car"><img id="configImg" src="img/rdm-1989.webp" alt="RDM 1989 city hatchback, side view" width="1200" height="750"></div>
+          <p class="config__note" id="configNote"></p>
           <div class="config__name"><span id="cfgModelName">RDM 1989</span> <small id="cfgModelType">City hatchback</small></div>
           <dl class="specs">
             <div><dt>Power</dt><dd id="specPower">110 KM</dd></div>
@@ -150,6 +184,17 @@
     </div>
   </section>
 
+  <!-- LIFESTYLE BAND -->
+  <section class="band">
+    <img src="img/lake.webp" alt="A moss-green RDM 966 with a red kayak on its roof by a misty lake in Masuria" width="1376" height="768" loading="lazy">
+    <div class="band__shade" aria-hidden="true"></div>
+    <div class="wrap band__text">
+      <p class="eyebrow eyebrow--light">RDM 966 · Mazury</p>
+      <h2>Where the asphalt ends,<br>keep going.</h2>
+      <p>Terrain corners and roof rails for summer at the lake. Swap back to city wheels in September.</p>
+    </div>
+  </section>
+
   <!-- UPGRADE PATH -->
   <section class="section" id="upgrade">
     <div class="wrap">
@@ -160,6 +205,11 @@
         </div>
         <p class="lead">Most cars are thrown away for one tired part. With RDM you swap that part, hand in the old module for credit, and drive out the same day.</p>
       </div>
+
+      <figure class="photo">
+        <img src="img/workshop.webp" alt="A technician rolls a powertrain module out from under a red RDM on a lift" width="1376" height="768" loading="lazy">
+        <figcaption>Module swap at an RDM service point. About two hours, coffee included.</figcaption>
+      </figure>
 
       <ol class="timeline">
         <li>
@@ -254,6 +304,10 @@
         <div><dt>Body warranty</dt><dd>12 years</dd></div>
       </dl>
     </div>
+    <figure class="photo photo--dark wrap">
+      <img src="img/factory.webp" alt="RDM assembly hall in Radom with red car bodies, robots and workers" width="1376" height="768" loading="lazy">
+      <figcaption>The RDM plant in Radom. Bodies on the left, refurbished modules on the right.</figcaption>
+    </figure>
     <blockquote class="quote wrap">
       <p>“A car shouldn't be disposable. Ours are built to be kept — and improved.”</p>
     </blockquote>
@@ -266,6 +320,7 @@
         <p class="eyebrow">Jazda próbna</p>
         <h2>Take one<br>for a drive.</h2>
         <p class="lead">Pick a city and a body. We'll bring the car to you, with a technician who can show you a live module swap.</p>
+        <img class="drive__img" src="img/test-drive.webp" alt="A smiling woman with a key card next to a red RDM 1989 on a street in Kraków" width="896" height="1200" loading="lazy">
       </div>
       <form class="drive__form" id="driveForm" novalidate>
         <label>Name<input name="name" type="text" autocomplete="name" required></label>
