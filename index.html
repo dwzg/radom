@@ -24,11 +24,10 @@
       <a href="#modular">Modular</a>
       <a href="#models">Models</a>
       <a href="#design">Design</a>
-      <a href="#configure">Configure</a>
       <a href="#upgrade">Upgrade</a>
       <a href="#radom">Radom</a>
     </nav>
-    <a href="#drive" class="btn btn--small">Test drive</a>
+    <a href="#notify" class="btn btn--small">Get notified</a>
     <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
   </div>
 </header>
@@ -44,14 +43,14 @@
       <h1 class="hero__title">Built<br>to <em>change.</em></h1>
       <p class="hero__lead">Affordable, good-looking cars made of modules. Swap the engine, wheels, roof or interior whenever your life does — and keep the car you love.</p>
       <div class="hero__cta">
-        <a href="#configure" class="btn">Build your RDM</a>
+        <a href="#models" class="btn">Meet the models</a>
         <a href="#modular" class="btn btn--outline-light">See how it works</a>
       </div>
     </div>
   </section>
   <div class="wrap">
     <dl class="hero__stats">
-      <div><dt>From</dt><dd>79 900 zł</dd></div>
+      <div><dt>Models</dt><dd>3</dd></div>
       <div><dt>Swappable modules</dt><dd>7</dd></div>
       <div><dt>Engine swap</dt><dd>2 h</dd></div>
       <div><dt>Of the car you keep</dt><dd>90%</dd></div>
@@ -129,61 +128,6 @@
     </div>
   </section>
 
-  <!-- CONFIGURATOR -->
-  <section class="section section--tint" id="configure">
-    <div class="wrap">
-      <div class="section__head">
-        <p class="eyebrow">Configurator</p>
-        <h2>Build yours.</h2>
-      </div>
-      <div class="config">
-        <div class="config__stage">
-          <div class="config__car"><img id="configImg" src="img/rdm-1989.webp" alt="RDM 1989 city hatchback, side view" width="1200" height="750"></div>
-          <p class="config__note" id="configNote"></p>
-          <div class="config__name"><span id="cfgModelName">RDM 1989</span> <small id="cfgModelType">City hatchback</small></div>
-          <dl class="specs">
-            <div><dt>Power</dt><dd id="specPower">110 KM</dd></div>
-            <div><dt>0–100 km/h</dt><dd id="specAccel">10.4 s</dd></div>
-            <div><dt id="specRangeLabel">Fuel use</dt><dd id="specRange">5.1 l/100</dd></div>
-            <div><dt>Upgrade later</dt><dd>Yes</dd></div>
-          </dl>
-        </div>
-
-        <form class="config__panel" id="configForm" onsubmit="return false">
-          <fieldset>
-            <legend><span>01</span> Body</legend>
-            <div class="opts opts--3" id="optModel"></div>
-          </fieldset>
-          <fieldset>
-            <legend><span>02</span> Colour <em id="colorName"></em></legend>
-            <div class="swatches" id="optColor"></div>
-          </fieldset>
-          <fieldset>
-            <legend><span>03</span> Powertrain module</legend>
-            <div class="opts" id="optPower"></div>
-          </fieldset>
-          <fieldset>
-            <legend><span>04</span> Corners</legend>
-            <div class="opts opts--3" id="optWheel"></div>
-          </fieldset>
-          <fieldset>
-            <legend><span>05</span> Roof module</legend>
-            <div class="opts opts--2" id="optRoof"></div>
-          </fieldset>
-
-          <div class="summary">
-            <div>
-              <p class="summary__label">Your RDM</p>
-              <p class="summary__price" id="totalPrice">79 900 zł</p>
-              <p class="summary__monthly">or <b id="monthly">1 290 zł</b>/month with RDM Flex</p>
-            </div>
-            <a href="#drive" class="btn" id="reserveBtn">Book a test drive</a>
-          </div>
-        </form>
-      </div>
-    </div>
-  </section>
-
   <!-- LIFESTYLE BAND -->
   <section class="band">
     <img src="img/lake.webp" alt="A moss-green RDM 966 with a red kayak on its roof by a misty lake in Masuria" width="1376" height="768" loading="lazy">
@@ -203,7 +147,7 @@
           <p class="eyebrow">Upgrade, don't replace</p>
           <h2>Your car,<br>version two.</h2>
         </div>
-        <p class="lead">Most cars are thrown away for one tired part. With RDM you swap that part, hand in the old module for credit, and drive out the same day.</p>
+        <p class="lead">Most cars are thrown away for one tired part. With RDM you swap that part, hand in the old module for refurbishment, and drive out the same day.</p>
       </div>
 
       <figure class="photo">
@@ -215,42 +159,25 @@
         <li>
           <span class="timeline__year">2026</span>
           <h3>Start simple</h3>
-          <p>Buy an RDM 1989 with the R1 Turbo petrol module. Low price, low running costs, first car energy.</p>
-          <span class="timeline__cost">79 900 zł</span>
+          <p>Buy an RDM 1989 with the R1 Turbo petrol module. Simple, light and easy to live with — first car energy.</p>
         </li>
         <li>
           <span class="timeline__year">2029</span>
           <h3>Go hybrid</h3>
-          <p>Longer commute? Swap to the H2 Hybrid. Your R1 goes back for refurbishment and credit.</p>
-          <span class="timeline__cost">+ 7 900 zł</span>
+          <p>Longer commute? Swap to the H2 Hybrid. Your R1 goes back to Radom to be refurbished.</p>
         </li>
         <li>
           <span class="timeline__year">2032</span>
           <h3>Go electric</h3>
           <p>Charging is everywhere now. Drop in the E3 module and energy floor — same body, same seats, same memories.</p>
-          <span class="timeline__cost">+ 18 500 zł</span>
         </li>
         <li>
           <span class="timeline__year">2035</span>
           <h3>Refresh the face</h3>
           <p>New fascias, new lights, new wheels. It looks like a 2035 car because, mostly, it is one.</p>
-          <span class="timeline__cost">+ 4 900 zł</span>
         </li>
       </ol>
 
-      <div class="compare">
-        <div class="compare__item">
-          <p>Typical new car, 10 years</p>
-          <div class="bar"><span style="--w:100%"></span></div>
-          <b>2 cars bought</b>
-        </div>
-        <div class="compare__item compare__item--rdm">
-          <p>RDM, 10 years</p>
-          <div class="bar"><span style="--w:58%"></span></div>
-          <b>1 car, 3 upgrades</b>
-        </div>
-        <p class="compare__note">Illustrative example based on list prices and average module credit.</p>
-      </div>
     </div>
   </section>
 
@@ -258,33 +185,33 @@
   <section class="section section--tint">
     <div class="wrap">
       <div class="section__head">
-        <p class="eyebrow">Module store</p>
+        <p class="eyebrow">Modules</p>
         <h2>Pick it up like a part.<br>Fit it like a pro.</h2>
       </div>
       <div class="catalog">
         <article class="tile">
           <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="14" width="32" height="22" rx="3"/><path d="M14 14v-4h8v4M28 14v-4h6v4M16 25h16M24 20v10"/></svg>
-          <h3>E3 Electric</h3><p>204 KM, up to 420 km range.</p><span>from 29 000 zł</span>
+          <h3>E3 Electric</h3><p>204 KM, up to 420 km range.</p>
         </article>
         <article class="tile">
           <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 30h36M10 30V18h28v12M16 18v-6h16v6"/><circle cx="16" cy="36" r="3"/><circle cx="32" cy="36" r="3"/></svg>
-          <h3>Panoramic roof</h3><p>Tinted glass, six-bolt fit.</p><span>4 200 zł</span>
+          <h3>Panoramic roof</h3><p>Tinted glass, six-bolt fit.</p>
         </article>
         <article class="tile">
           <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="6"/><path d="M24 8v10M24 30v10M8 24h10M30 24h10"/></svg>
-          <h3>Terrain corners</h3><p>+30 mm ride, all-terrain tyres.</p><span>2 800 zł</span>
+          <h3>Terrain corners</h3><p>+30 mm ride, all-terrain tyres.</p>
         </article>
         <article class="tile">
           <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 38V20a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v10h10a4 4 0 0 1 4 4v4"/><path d="M8 38h32"/></svg>
-          <h3>Van interior</h3><p>Two seats, flat 1.6 m floor.</p><span>3 400 zł</span>
+          <h3>Van interior</h3><p>Two seats, flat 1.6 m floor.</p>
         </article>
         <article class="tile">
           <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 28c4-8 10-12 18-12s14 4 18 12"/><path d="M10 28h28v6H10z"/><path d="M14 31h4M30 31h4"/></svg>
-          <h3>Sport fascia</h3><p>Front and rear, LED light bar.</p><span>3 900 zł</span>
+          <h3>Sport fascia</h3><p>Front and rear, LED light bar.</p>
         </article>
         <article class="tile">
           <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="16" width="32" height="12" rx="2"/><path d="M14 16v12M20 16v12M26 16v12M32 16v12M24 28v8M18 36h12"/></svg>
-          <h3>Solar roof</h3><p>Adds up to 15 km a day.</p><span>6 500 zł</span>
+          <h3>Solar roof</h3><p>Adds up to 15 km a day.</p>
         </article>
       </div>
     </div>
@@ -313,32 +240,24 @@
     </blockquote>
   </section>
 
-  <!-- TEST DRIVE -->
-  <section class="section" id="drive">
+  <!-- NOTIFY -->
+  <section class="section" id="notify">
     <div class="wrap drive">
       <div>
-        <p class="eyebrow">Jazda próbna</p>
-        <h2>Take one<br>for a drive.</h2>
-        <p class="lead">Pick a city and a body. We'll bring the car to you, with a technician who can show you a live module swap.</p>
+        <p class="eyebrow">Wkrótce · Coming soon</p>
+        <h2>Be first<br>behind the wheel.</h2>
+        <p class="lead">The RDM 1989, 1683 and 966 are on their way. Leave your email and we'll tell you first when you can see, sit in and drive one.</p>
         <img class="drive__img" src="img/test-drive.webp" alt="A smiling woman with a key card next to a red RDM 1989 on a street in Kraków" width="896" height="1200" loading="lazy">
       </div>
       <form class="drive__form" id="driveForm" novalidate>
         <label>Name<input name="name" type="text" autocomplete="name" required></label>
         <label>Email<input name="email" type="email" autocomplete="email" required></label>
-        <div class="drive__row">
-          <label>City
-            <select name="city">
-              <option>Warszawa</option><option>Kraków</option><option>Radom</option>
-              <option>Gdańsk</option><option>Wrocław</option><option>Poznań</option><option>Łódź</option>
-            </select>
-          </label>
-          <label>Model
-            <select name="model" id="driveModel">
-              <option value="y1989">RDM 1989</option><option value="y1683">RDM 1683</option><option value="y966">RDM 966</option>
-            </select>
-          </label>
-        </div>
-        <button class="btn" type="submit">Request test drive</button>
+        <label>Most interested in
+          <select name="model" id="driveModel">
+            <option value="y1989">RDM 1989 · City hatchback</option><option value="y1683">RDM 1683 · Fastback coupé</option><option value="y966">RDM 966 · Compact crossover</option>
+          </select>
+        </label>
+        <button class="btn" type="submit">Keep me posted</button>
         <p class="drive__msg" id="driveMsg" role="status" aria-live="polite"></p>
       </form>
     </div>
@@ -357,13 +276,13 @@
     </div>
     <div class="footer__cols">
       <div><h4>Cars</h4><a href="#models">RDM 1989</a><a href="#models">RDM 1683</a><a href="#models">RDM 966</a></div>
-      <div><h4>Own</h4><a href="#configure">Configure</a><a href="#upgrade">Upgrades</a><a href="#drive">Test drive</a></div>
+      <div><h4>Explore</h4><a href="#modular">Modules</a><a href="#design">Design</a><a href="#upgrade">Upgrades</a></div>
       <div><h4>Company</h4><a href="#radom">About Radom</a><a href="#modular">Platform</a><a href="#top">Press</a></div>
     </div>
   </div>
   <div class="wrap footer__base">
     <span>© 2026 Radom Motors</span>
-    <span>Prices are illustrative and include VAT.</span>
+    <span>Pre-production models. Images are renderings.</span>
   </div>
 </footer>
 
