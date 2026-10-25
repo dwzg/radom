@@ -5,8 +5,8 @@
 
   /* ---------- Data ---------- */
   const MODELS = {
-    kos: {
-      name: 'Kos', type: 'City hatchback', mean: 'Kos = blackbird', base: 79900, lift: 0,
+    y1989: {
+      name: '1989', type: 'City hatchback', mean: '4 June 1989 — the elections that opened the door to a free Poland.', base: 79900, lift: 0,
       desc: 'A compact hatch for the city. Tight turning circle, huge boot for its size, and the cheapest way into an RDM.',
       seats: '5 seats', length: '4.05 m',
       shell: 'M 95 228 L 138 228 A 62 62 0 0 1 262 228 L 538 228 A 62 62 0 0 1 662 228 L 705 228 Q 728 226 728 205 L 726 182 Q 722 160 690 152 L 545 128 Q 485 86 420 80 L 205 82 Q 140 86 112 118 Q 88 145 86 180 L 88 212 Q 90 228 95 228 Z',
@@ -15,8 +15,8 @@
       tail: 'M 88 150 L 100 146 L 100 172 L 87 176 Z',
       roof: [215, 81, 412, 79],
     },
-    sokol: {
-      name: 'Sokół', type: 'Fastback coupé', mean: 'Sokół = falcon', base: 94900, lift: 0,
+    y1918: {
+      name: '1918', type: 'Fastback coupé', mean: '11 November 1918 — Poland regains its independence.', base: 94900, lift: 0,
       desc: 'Low, long and quick. The same modules in a sleeker shell, with sport corners as standard on the E3.',
       seats: '4 seats', length: '4.38 m',
       shell: 'M 92 226 L 138 226 A 62 62 0 0 1 262 226 L 538 226 A 62 62 0 0 1 662 226 L 712 226 Q 734 224 734 204 L 732 184 Q 728 164 694 158 L 540 134 Q 478 92 410 88 L 260 90 Q 175 96 120 138 Q 90 160 88 186 L 88 210 Q 90 226 92 226 Z',
@@ -25,8 +25,8 @@
       tail: 'M 90 168 L 108 158 L 108 176 L 89 184 Z',
       roof: [272, 89, 402, 88],
     },
-    zubr: {
-      name: 'Żubr', type: 'Compact crossover', mean: 'Żubr = European bison', base: 109900, lift: 14,
+    y966: {
+      name: '966', type: 'Compact crossover', mean: '966 — the baptism of Mieszko I and the birth of the Polish state.', base: 109900, lift: 14,
       desc: 'Raised, roomy and ready for gravel roads to the lake house. Fits a roof rack, a dog and a family of five.',
       seats: '5 seats', length: '4.42 m',
       shell: 'M 92 228 L 134 228 A 66 66 0 0 1 266 228 L 534 228 A 66 66 0 0 1 666 228 L 708 228 Q 730 226 730 204 L 728 176 Q 724 152 690 146 L 548 124 Q 492 76 425 70 L 190 70 Q 128 72 104 104 Q 86 132 86 170 L 88 212 Q 90 228 92 228 Z',
@@ -121,7 +121,7 @@
   }
 
   function carSVG(opts) {
-    const o = Object.assign({ model: 'kos', color: '#c8102e', wheel: 'aero', roof: 'steel', markers: false }, opts);
+    const o = Object.assign({ model: 'y1989', color: '#c8102e', wheel: 'aero', roof: 'steel', markers: false }, opts);
     const m = MODELS[o.model];
     const id = 'car' + (++uid);
     const lift = m.lift;
@@ -212,13 +212,13 @@
 
   /* ---------- Hero ---------- */
   const hero = document.getElementById('heroCar');
-  if (hero) hero.innerHTML = carSVG({ model: 'kos', color: '#c8102e', wheel: 'sport', roof: 'pano' });
+  if (hero) hero.innerHTML = carSVG({ model: 'y1989', color: '#c8102e', wheel: 'sport', roof: 'pano' });
 
   /* ---------- Exploded view ---------- */
   const exStage = document.getElementById('explodeCar');
   const exBtn = document.getElementById('explodeBtn');
   if (exStage) {
-    exStage.innerHTML = carSVG({ model: 'kos', color: '#e8e6e1', wheel: 'aero', roof: 'solar', markers: true });
+    exStage.innerHTML = carSVG({ model: 'y1989', color: '#e8e6e1', wheel: 'aero', roof: 'solar', markers: true });
     const setExploded = on => {
       exStage.classList.toggle('is-exploded', on);
       exBtn.setAttribute('aria-pressed', String(on));
@@ -235,7 +235,7 @@
   }
 
   /* ---------- Configurator ---------- */
-  const state = { model: 'kos', color: 'red', power: 'r1', wheel: 'aero', roof: 'steel' };
+  const state = { model: 'y1989', color: 'red', power: 'r1', wheel: 'aero', roof: 'steel' };
   const $ = id => document.getElementById(id);
 
   function optionHTML(group, item, extraClass = '') {
@@ -285,7 +285,7 @@
     $('cfgModelName').textContent = 'RDM ' + m.name;
     $('cfgModelType').textContent = `${m.type} · ${m.seats} · ${m.length}`;
     $('specPower').textContent = p.kw;
-    const accel = Math.max(5.9, p.accel + (w.accel || 0) + (state.model === 'zubr' ? 0.6 : state.model === 'sokol' ? -0.3 : 0));
+    const accel = Math.max(5.9, p.accel + (w.accel || 0) + (state.model === 'y966' ? 0.6 : state.model === 'y1918' ? -0.3 : 0));
     $('specAccel').textContent = accel.toFixed(1).replace('.', ',') + ' s';
     $('specRangeLabel').textContent = p.rangeLabel;
     $('specRange').textContent = p.range;
@@ -314,12 +314,12 @@
 
   /* ---------- Model cards ---------- */
   const cards = $('modelCards');
-  const cardLooks = { kos: ['#c8102e', 'aero', 'steel'], sokol: ['#2c4f80', 'sport', 'pano'], zubr: ['#5e6b4b', 'terrain', 'rails'] };
+  const cardLooks = { y1989: ['#c8102e', 'aero', 'steel'], y1918: ['#2c4f80', 'sport', 'pano'], y966: ['#5e6b4b', 'terrain', 'rails'] };
   cards.innerHTML = Object.entries(MODELS).map(([id, m], i) => {
     const [color, wheel, roof] = cardLooks[id];
     return `<article class="model reveal" style="transition-delay:${i * 90}ms">
       <div class="model__meta"><span>0${i + 1}</span><span>${m.type}</span></div>
-      <h3>${m.name}</h3>
+      <h3>RDM ${m.name}</h3>
       <p class="model__mean">${m.mean}</p>
       <div class="model__car">${carSVG({ model: id, color, wheel, roof })}</div>
       <p class="model__desc">${m.desc}</p>
