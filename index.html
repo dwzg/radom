@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>RDM Radom — Built to change</title>
+  <meta name="description" content="Radom (RDM) builds affordable, good-looking modular cars in Poland. Swap the engine, wheels, roof and interior as your life changes.">
+  <meta name="theme-color" content="#111214">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,300..900&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect x='2' y='2' width='13' height='13' rx='2' fill='%23111214'/%3E%3Crect x='17' y='2' width='13' height='13' rx='2' fill='%23d4002a'/%3E%3Crect x='2' y='17' width='13' height='13' rx='2' fill='%23111214'/%3E%3Crect x='17' y='17' width='13' height='13' rx='2' fill='%23111214'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="nav" id="top">
+  <div class="nav__inner wrap">
+    <a href="#top" class="logo" aria-label="RDM Radom home">
+      <span class="logo__mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+      <span class="logo__word">RDM</span>
+    </a>
+    <nav class="nav__links" aria-label="Main">
+      <a href="#modular">Modular</a>
+      <a href="#models">Models</a>
+      <a href="#configure">Configure</a>
+      <a href="#upgrade">Upgrade</a>
+      <a href="#radom">Radom</a>
+    </nav>
+    <a href="#drive" class="btn btn--small">Test drive</a>
+    <button class="nav__toggle" aria-label="Open menu" aria-expanded="false"><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__bg" aria-hidden="true">RDM</div>
+    <div class="wrap hero__inner">
+      <p class="eyebrow">Radom Motors · Made in Poland</p>
+      <h1 class="hero__title">Built<br>to <em>change.</em></h1>
+      <p class="hero__lead">Affordable, good-looking cars made of modules. Swap the engine, wheels, roof or interior whenever your life does — and keep the car you love.</p>
+      <div class="hero__cta">
+        <a href="#configure" class="btn">Build your RDM</a>
+        <a href="#modular" class="btn btn--ghost">See how it works</a>
+      </div>
+    </div>
+    <div class="hero__car wrap" id="heroCar" aria-hidden="true"></div>
+    <div class="wrap">
+      <dl class="hero__stats">
+        <div><dt>From</dt><dd>79 900 zł</dd></div>
+        <div><dt>Swappable modules</dt><dd>7</dd></div>
+        <div><dt>Engine swap</dt><dd>2 h</dd></div>
+        <div><dt>Of the car you keep</dt><dd>90%</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- MODULAR / EXPLODED -->
+  <section class="section section--dark" id="modular">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">One platform</p>
+        <h2>One chassis.<br>Endless cars.</h2>
+        <p class="lead">Every RDM is built on the same bolt-together platform. Modules connect with standard mounts and a single data plug, so an upgrade is a service appointment — not a new car.</p>
+      </div>
+      <div class="explode">
+        <div class="explode__stage">
+          <div id="explodeCar"></div>
+          <button class="btn btn--light explode__btn" id="explodeBtn" aria-pressed="false">Take it apart</button>
+        </div>
+        <ol class="explode__list">
+          <li><b>Powertrain</b><span>Petrol, hybrid or electric. Same mounts, swapped in about two hours.</span></li>
+          <li><b>Energy floor</b><span>Fuel tank or battery pack slides into the flat floor.</span></li>
+          <li><b>Interior</b><span>Seats, dash and screen lift out as one tray. Go from 5 seats to cargo.</span></li>
+          <li><b>Corners</b><span>Wheels, brakes and suspension per corner. City comfort or gravel ready.</span></li>
+          <li><b>Fascias</b><span>Front and rear bumpers with lights. Refresh the face, not the car.</span></li>
+          <li><b>Roof</b><span>Steel, panoramic glass, rails or solar. Six bolts, one afternoon.</span></li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODELS -->
+  <section class="section" id="models">
+    <div class="wrap">
+      <div class="section__head section__head--row">
+        <div>
+          <p class="eyebrow">The lineup</p>
+          <h2>Three bodies.<br>Named after Polish skies and forests.</h2>
+        </div>
+        <p class="lead">All three share the same modules, so a powertrain from a Kos fits a Żubr. Choose the shape now — the rest can change later.</p>
+      </div>
+      <div class="models" id="modelCards"></div>
+    </div>
+  </section>
+
+  <!-- CONFIGURATOR -->
+  <section class="section section--tint" id="configure">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Configurator</p>
+        <h2>Build yours.</h2>
+      </div>
+      <div class="config">
+        <div class="config__stage">
+          <div class="config__car" id="configCar"></div>
+          <div class="config__name"><span id="cfgModelName">RDM Kos</span> <small id="cfgModelType">City hatchback</small></div>
+          <dl class="specs">
+            <div><dt>Power</dt><dd id="specPower">110 KM</dd></div>
+            <div><dt>0–100 km/h</dt><dd id="specAccel">10.4 s</dd></div>
+            <div><dt id="specRangeLabel">Fuel use</dt><dd id="specRange">5.1 l/100</dd></div>
+            <div><dt>Upgrade later</dt><dd>Yes</dd></div>
+          </dl>
+        </div>
+
+        <form class="config__panel" id="configForm" onsubmit="return false">
+          <fieldset>
+            <legend><span>01</span> Body</legend>
+            <div class="opts opts--3" id="optModel"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span>02</span> Colour <em id="colorName"></em></legend>
+            <div class="swatches" id="optColor"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span>03</span> Powertrain module</legend>
+            <div class="opts" id="optPower"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span>04</span> Corners</legend>
+            <div class="opts opts--3" id="optWheel"></div>
+          </fieldset>
+          <fieldset>
+            <legend><span>05</span> Roof module</legend>
+            <div class="opts opts--2" id="optRoof"></div>
+          </fieldset>
+
+          <div class="summary">
+            <div>
+              <p class="summary__label">Your RDM</p>
+              <p class="summary__price" id="totalPrice">79 900 zł</p>
+              <p class="summary__monthly">or <b id="monthly">1 290 zł</b>/month with RDM Flex</p>
+            </div>
+            <a href="#drive" class="btn" id="reserveBtn">Book a test drive</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- UPGRADE PATH -->
+  <section class="section" id="upgrade">
+    <div class="wrap">
+      <div class="section__head section__head--row">
+        <div>
+          <p class="eyebrow">Upgrade, don't replace</p>
+          <h2>Your car,<br>version two.</h2>
+        </div>
+        <p class="lead">Most cars are thrown away for one tired part. With RDM you swap that part, hand in the old module for credit, and drive out the same day.</p>
+      </div>
+
+      <ol class="timeline">
+        <li>
+          <span class="timeline__year">2026</span>
+          <h3>Start simple</h3>
+          <p>Buy a Kos with the R1 Turbo petrol module. Low price, low running costs, first car energy.</p>
+          <span class="timeline__cost">79 900 zł</span>
+        </li>
+        <li>
+          <span class="timeline__year">2029</span>
+          <h3>Go hybrid</h3>
+          <p>Longer commute? Swap to the H2 Hybrid. Your R1 goes back for refurbishment and credit.</p>
+          <span class="timeline__cost">+ 7 900 zł</span>
+        </li>
+        <li>
+          <span class="timeline__year">2032</span>
+          <h3>Go electric</h3>
+          <p>Charging is everywhere now. Drop in the E3 module and energy floor — same body, same seats, same memories.</p>
+          <span class="timeline__cost">+ 18 500 zł</span>
+        </li>
+        <li>
+          <span class="timeline__year">2035</span>
+          <h3>Refresh the face</h3>
+          <p>New fascias, new lights, new wheels. It looks like a 2035 car because, mostly, it is one.</p>
+          <span class="timeline__cost">+ 4 900 zł</span>
+        </li>
+      </ol>
+
+      <div class="compare">
+        <div class="compare__item">
+          <p>Typical new car, 10 years</p>
+          <div class="bar"><span style="--w:100%"></span></div>
+          <b>2 cars bought</b>
+        </div>
+        <div class="compare__item compare__item--rdm">
+          <p>RDM, 10 years</p>
+          <div class="bar"><span style="--w:58%"></span></div>
+          <b>1 car, 3 upgrades</b>
+        </div>
+        <p class="compare__note">Illustrative example based on list prices and average module credit.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODULE CATALOG -->
+  <section class="section section--tint">
+    <div class="wrap">
+      <div class="section__head">
+        <p class="eyebrow">Module store</p>
+        <h2>Pick it up like a part.<br>Fit it like a pro.</h2>
+      </div>
+      <div class="catalog">
+        <article class="tile">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="14" width="32" height="22" rx="3"/><path d="M14 14v-4h8v4M28 14v-4h6v4M16 25h16M24 20v10"/></svg>
+          <h3>E3 Electric</h3><p>204 KM, up to 420 km range.</p><span>from 29 000 zł</span>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 30h36M10 30V18h28v12M16 18v-6h16v6"/><circle cx="16" cy="36" r="3"/><circle cx="32" cy="36" r="3"/></svg>
+          <h3>Panoramic roof</h3><p>Tinted glass, six-bolt fit.</p><span>4 200 zł</span>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="16"/><circle cx="24" cy="24" r="6"/><path d="M24 8v10M24 30v10M8 24h10M30 24h10"/></svg>
+          <h3>Terrain corners</h3><p>+30 mm ride, all-terrain tyres.</p><span>2 800 zł</span>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M12 38V20a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v10h10a4 4 0 0 1 4 4v4"/><path d="M8 38h32"/></svg>
+          <h3>Van interior</h3><p>Two seats, flat 1.6 m floor.</p><span>3 400 zł</span>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><path d="M6 28c4-8 10-12 18-12s14 4 18 12"/><path d="M10 28h28v6H10z"/><path d="M14 31h4M30 31h4"/></svg>
+          <h3>Sport fascia</h3><p>Front and rear, LED light bar.</p><span>3 900 zł</span>
+        </article>
+        <article class="tile">
+          <svg viewBox="0 0 48 48" aria-hidden="true"><rect x="8" y="16" width="32" height="12" rx="2"/><path d="M14 16v12M20 16v12M26 16v12M32 16v12M24 28v8M18 36h12"/></svg>
+          <h3>Solar roof</h3><p>Adds up to 15 km a day.</p><span>6 500 zł</span>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- RADOM -->
+  <section class="section section--dark radom" id="radom">
+    <div class="wrap radom__inner">
+      <div>
+        <p class="eyebrow">Home</p>
+        <h2>Designed and built<br>in Radom.</h2>
+        <p class="lead">Our plant sits 100 km south of Warsaw, in a city that has made precise things for a century. Every module is designed, assembled and refurbished here — the same hands that build your car rebuild its parts.</p>
+      </div>
+      <dl class="radom__stats">
+        <div><dt>Modules refurbished, not scrapped</dt><dd>94%</dd></div>
+        <div><dt>RDM service points in Poland</dt><dd>40+</dd></div>
+        <div><dt>Body warranty</dt><dd>12 years</dd></div>
+      </dl>
+    </div>
+    <blockquote class="quote wrap">
+      <p>“A car shouldn't be disposable. Ours are built to be kept — and improved.”</p>
+    </blockquote>
+  </section>
+
+  <!-- TEST DRIVE -->
+  <section class="section" id="drive">
+    <div class="wrap drive">
+      <div>
+        <p class="eyebrow">Jazda próbna</p>
+        <h2>Take one<br>for a drive.</h2>
+        <p class="lead">Pick a city and a body. We'll bring the car to you, with a technician who can show you a live module swap.</p>
+      </div>
+      <form class="drive__form" id="driveForm" novalidate>
+        <label>Name<input name="name" type="text" autocomplete="name" required></label>
+        <label>Email<input name="email" type="email" autocomplete="email" required></label>
+        <div class="drive__row">
+          <label>City
+            <select name="city">
+              <option>Warszawa</option><option>Kraków</option><option>Radom</option>
+              <option>Gdańsk</option><option>Wrocław</option><option>Poznań</option><option>Łódź</option>
+            </select>
+          </label>
+          <label>Model
+            <select name="model" id="driveModel">
+              <option value="kos">RDM Kos</option><option value="sokol">RDM Sokół</option><option value="zubr">RDM Żubr</option>
+            </select>
+          </label>
+        </div>
+        <button class="btn" type="submit">Request test drive</button>
+        <p class="drive__msg" id="driveMsg" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap footer__inner">
+    <div>
+      <a href="#top" class="logo logo--light" aria-label="RDM Radom home">
+        <span class="logo__mark" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
+        <span class="logo__word">RDM</span>
+      </a>
+      <p>Radom Motors. Built to change.</p>
+    </div>
+    <div class="footer__cols">
+      <div><h4>Cars</h4><a href="#models">Kos</a><a href="#models">Sokół</a><a href="#models">Żubr</a></div>
+      <div><h4>Own</h4><a href="#configure">Configure</a><a href="#upgrade">Upgrades</a><a href="#drive">Test drive</a></div>
+      <div><h4>Company</h4><a href="#radom">About Radom</a><a href="#modular">Platform</a><a href="#top">Press</a></div>
+    </div>
+  </div>
+  <div class="wrap footer__base">
+    <span>© 2026 Radom Motors</span>
+    <span>Prices are illustrative and include VAT.</span>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
