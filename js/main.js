@@ -15,9 +15,9 @@
       tail: 'M 88 150 L 100 146 L 100 172 L 87 176 Z',
       roof: [215, 81, 412, 79],
     },
-    y1918: {
-      name: '1918', type: 'Fastback coupé', mean: '11 November 1918 — Poland regains its independence.', base: 94900, lift: 0,
-      desc: 'Low, long and quick. The same modules in a sleeker shell, with sport corners as standard on the E3.',
+    y1683: {
+      name: '1683', type: 'Fastback coupé', mean: '12 September 1683 — Sobieski’s winged hussars charge to relieve Vienna.', base: 94900, lift: 0,
+      desc: 'Low, long and quick — built for the charge. The same modules in a sleeker shell, with sport corners as standard on the E3.',
       seats: '4 seats', length: '4.38 m',
       shell: 'M 92 226 L 138 226 A 62 62 0 0 1 262 226 L 538 226 A 62 62 0 0 1 662 226 L 712 226 Q 734 224 734 204 L 732 184 Q 728 164 694 158 L 540 134 Q 478 92 410 88 L 260 90 Q 175 96 120 138 Q 90 160 88 186 L 88 210 Q 90 226 92 226 Z',
       glass: 'M 265 103 L 405 101 Q 455 106 505 135 L 340 137 L 165 135 Q 200 110 265 103 Z',
@@ -285,7 +285,7 @@
     $('cfgModelName').textContent = 'RDM ' + m.name;
     $('cfgModelType').textContent = `${m.type} · ${m.seats} · ${m.length}`;
     $('specPower').textContent = p.kw;
-    const accel = Math.max(5.9, p.accel + (w.accel || 0) + (state.model === 'y966' ? 0.6 : state.model === 'y1918' ? -0.3 : 0));
+    const accel = Math.max(5.9, p.accel + (w.accel || 0) + (state.model === 'y966' ? 0.6 : state.model === 'y1683' ? -0.3 : 0));
     $('specAccel').textContent = accel.toFixed(1).replace('.', ',') + ' s';
     $('specRangeLabel').textContent = p.rangeLabel;
     $('specRange').textContent = p.range;
@@ -314,7 +314,7 @@
 
   /* ---------- Model cards ---------- */
   const cards = $('modelCards');
-  const cardLooks = { y1989: ['#c8102e', 'aero', 'steel'], y1918: ['#2c4f80', 'sport', 'pano'], y966: ['#5e6b4b', 'terrain', 'rails'] };
+  const cardLooks = { y1989: ['#c8102e', 'aero', 'steel'], y1683: ['#2c4f80', 'sport', 'pano'], y966: ['#5e6b4b', 'terrain', 'rails'] };
   cards.innerHTML = Object.entries(MODELS).map(([id, m], i) => {
     const [color, wheel, roof] = cardLooks[id];
     return `<article class="model reveal" style="transition-delay:${i * 90}ms">
