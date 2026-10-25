@@ -5,15 +5,22 @@ models (RDM 1989, RDM 1683, RDM 966) without prices or a configurator.
 
 ## Run with Docker
 
+The Compose file publishes no ports. It joins the external `nginx-proxy-network`, where your
+reverse proxy reaches the site at `http://rdm-site:8080`.
+
 ```sh
-docker compose up -d --build      # http://localhost:8080
+docker network create nginx-proxy-network   # only if it doesn't exist yet
+docker compose up -d --build
 ```
 
-or without Compose:
+For nginx-proxy (`nginxproxy/nginx-proxy`), uncomment `VIRTUAL_HOST` / `VIRTUAL_PORT` in
+`docker-compose.yml`. For Nginx Proxy Manager, add a proxy host pointing to `rdm-site`, port `8080`.
+
+To try it locally without a proxy:
 
 ```sh
 docker build -t rdm-site .
-docker run -d -p 8080:8080 --read-only --tmpfs /tmp --name rdm rdm-site
+docker run -d -p 8080:8080 --read-only --tmpfs /tmp --name rdm rdm-site   # http://localhost:8080
 ```
 
 The image is `nginx-unprivileged` on Alpine: it runs as a non-root user on port 8080, gzips

@@ -1,10 +1,23 @@
+# No ports are published. The site is only reachable through the reverse proxy
+# on the external network, at http://rdm-site:8080.
 services:
   web:
     build: .
     image: rdm-site
-    ports:
-      - "8080:8080"
+    container_name: rdm-site
     restart: unless-stopped
     read_only: true
     tmpfs:
       - /tmp
+    expose:
+      - "8080"
+    # For nginx-proxy (nginxproxy/nginx-proxy), set your domain here:
+    # environment:
+    #   VIRTUAL_HOST: rdm.example.com
+    #   VIRTUAL_PORT: "8080"
+    networks:
+      - nginx-proxy-network
+
+networks:
+  nginx-proxy-network:
+    external: true
