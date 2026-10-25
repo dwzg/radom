@@ -1,0 +1,24 @@
+# Production stack for Portainer: runs the image published by GitLab CI.
+# Set RDM_IMAGE in the stack's environment variables, e.g.
+#   RDM_IMAGE=registry.gitlab.com/<group>/<project>:latest
+# No ports are published; the reverse proxy reaches the site at http://rdm-site:8080.
+services:
+  web:
+    image: ${RDM_IMAGE:?Set RDM_IMAGE to the registry image, e.g. registry.gitlab.com/group/project:latest}
+    container_name: rdm-site
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp
+    expose:
+      - "8080"
+    # For nginx-proxy (nginxproxy/nginx-proxy), set your domain here:
+    # environment:
+    #   VIRTUAL_HOST: rdm.example.com
+    #   VIRTUAL_PORT: "8080"
+    networks:
+      - nginx-proxy-network
+
+networks:
+  nginx-proxy-network:
+    external: true
