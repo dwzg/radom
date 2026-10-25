@@ -27,30 +27,32 @@ The image is `nginx-unprivileged` on Alpine: it runs as a non-root user on port 
 CSS/JS, sets cache and security headers, and answers `/healthz` for health checks.
 Put a TLS-terminating proxy or load balancer in front of it for HTTPS.
 
-## GitLab CI and Portainer
+## GitHub Actions and Portainer
 
-`.gitlab-ci.yml` builds the image, smoke-tests it and pushes it to the project's GitLab Container Registry:
+`.github/workflows/docker.yml` builds the image, smoke-tests it and publishes it to the GitHub
+Container Registry as `ghcr.io/dwzg/radom`:
 
-| Pipeline | Image tags pushed |
+| Event | Image tags pushed |
 |---|---|
-| Merge request | none (build and test only) |
-| Any branch | `<short-sha>` |
-| Default branch | `<short-sha>`, `latest` |
-| Git tag, e.g. `v1.0.0` | `<short-sha>`, `v1.0.0` |
+| Pull request | none (build and test only) |
+| Push to `main` | `sha-<short-sha>`, `latest` |
+| Git tag `v1.2.0` | `sha-<short-sha>`, `1.2.0`, `1.2` |
 
-The runner needs Docker-in-Docker (a privileged runner; GitLab.com shared runners work).
+The package appears under the repository's **Packages**. It's private by default for a private
+repo — make it public in the package settings, or give Portainer a token to pull it.
 
 **Redeploy with Portainer (optional)**
 
-1. In Portainer, add the GitLab registry (`registry.gitlab.com`) with a deploy token that has `read_registry`.
-2. Create a stack from `deploy/docker-compose.yml` and set the environment variable
-   `RDM_IMAGE=registry.gitlab.com/<group>/<project>:latest`.
+1. If the package is private, add `ghcr.io` as a registry in Portainer, with your GitHub username
+   and a personal access token that has `read:packages`.
+2. Create a stack from `deploy/docker-compose.yml`. It runs `ghcr.io/dwzg/radom:latest`;
+   set `RDM_IMAGE` in the stack's environment variables to pin a version.
 3. Turn on the stack's webhook with "re-pull image" enabled, and copy its URL.
-4. In GitLab → Settings → CI/CD → Variables, add `PORTAINER_WEBHOOK_URL` (masked, protected).
+4. In GitHub → Settings → Secrets and variables → Actions, add the secret `PORTAINER_WEBHOOK_URL`.
 
-After `latest` is pushed from the default branch, the `deploy` job calls the webhook and Portainer
-pulls the new image. Without the variable, the deploy job is skipped. Set `PORTAINER_DEPLOY_MANUAL=true`
-to make it a manual button instead.
+After `latest` is pushed from `main`, the `deploy` job calls the webhook and Portainer pulls the new
+image. Without the secret, the deploy step is skipped. The job runs in the `production` environment,
+so you can add a required reviewer there to make each deploy wait for approval.
 
 ## Run without Docker
 
@@ -63,6 +65,6 @@ No build step: open `index.html`, or run `python3 -m http.server` in this folder
 - `js/main.js` — model cards, exploded-view hotspots, sign-up form
 - `img/` — AI-generated photos (WebP), made with the prompts in `docs/image-prompts.md`
 - `Dockerfile`, `nginx.conf`, `docker-compose.yml` — container hosting
-- `.gitlab-ci.yml`, `deploy/docker-compose.yml` — GitLab CI release and Portainer stack
+- `.github/workflows/docker.yml`, `deploy/docker-compose.yml` — image release to GHCR and Portainer stack
 
 The "Keep me posted" form has no backend yet; it only shows a thank-you message.
