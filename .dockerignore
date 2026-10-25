@@ -4,3 +4,5 @@ docs
 Dockerfile
 docker-compose.yml
 .dockerignore
+deploy
+.gitlab-ci.yml
