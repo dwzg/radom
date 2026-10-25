@@ -1,5 +1,5 @@
 # Builds the site image, smoke-tests it, publishes it to the GitHub Container Registry
-# (ghcr.io/<owner>/<repo>) and optionally tells Portainer to redeploy.
+# (ghcr.io/dwzg/radom) and optionally tells Portainer to redeploy.
 #
 # Tags pushed:
 #   sha-<short-sha>   every push to main and every v* tag
@@ -25,7 +25,7 @@ concurrency:
   cancel-in-progress: true
 
 env:
-  IMAGE: ghcr.io/${{ github.repository }}
+  IMAGE: ghcr.io/dwzg/radom
 
 jobs:
   build:

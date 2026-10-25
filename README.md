@@ -45,8 +45,7 @@ repo — make it public in the package settings, or give Portainer a token to pu
 
 1. If the package is private, add `ghcr.io` as a registry in Portainer, with your GitHub username
    and a personal access token that has `read:packages`.
-2. Create a stack from `deploy/docker-compose.yml`. It runs `ghcr.io/dwzg/radom:latest`;
-   set `RDM_IMAGE` in the stack's environment variables to pin a version.
+2. Create a stack from `deploy/docker-compose.yml`. It runs `ghcr.io/dwzg/radom:latest`.
 3. Turn on the stack's webhook with "re-pull image" enabled, and copy its URL.
 4. In GitHub → Settings → Secrets and variables → Actions, add the secret `PORTAINER_WEBHOOK_URL`.
 
