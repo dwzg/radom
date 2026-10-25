@@ -7,18 +7,18 @@
   const MODELS = {
     y1989: {
       name: '1989', type: 'City hatchback', mean: '4 June 1989 — the elections that opened the door to a free Poland.',
-      desc: 'A compact hatch for the city. Tight turning circle, huge boot for its size, and the simplest way into an RDM.',
-      seats: '5 seats', length: '4.05 m', img: 'img/rdm-1989.webp',
+      desc: 'Imagined as a compact hatch for the city: easy to park, roomy for its size, and the simplest way into an RDM.',
+      img: 'img/rdm-1989.webp',
     },
     y1683: {
       name: '1683', type: 'Fastback coupé', mean: '12 September 1683 — Sobieski’s winged hussars charge to relieve Vienna.',
-      desc: 'Low, long and quick — built for the charge. The same modules in a sleeker shell, with sport corners and the E3 electric module in mind.',
-      seats: '4 seats', length: '4.38 m', img: 'img/rdm-1683.webp',
+      desc: 'Imagined as the sporty one: low, long and sleek, built for the charge. The same modules in a lower, two-door shell.',
+      img: 'img/rdm-1683.webp',
     },
     y966: {
       name: '966', type: 'Compact crossover', mean: '966 — the baptism of Mieszko I and the birth of the Polish state.',
-      desc: 'Raised, roomy and ready for gravel roads to the lake house. Fits a roof rack, a dog and a family of five.',
-      seats: '5 seats', length: '4.42 m', img: 'img/rdm-966.webp',
+      desc: 'Imagined as the adventurous one: raised, rugged and ready for gravel roads to the lake house, with room for a family and a roof rack.',
+      img: 'img/rdm-966.webp',
     },
   };
 
@@ -35,38 +35,17 @@
   const cards = $('modelCards');
   cards.innerHTML = Object.entries(MODELS).map(([id, m], i) => `
     <article class="model reveal" style="transition-delay:${i * 90}ms">
-      <div class="model__img"><img src="${m.img}" alt="RDM ${m.name} ${m.type.toLowerCase()}, side view" loading="lazy" width="1200" height="750"></div>
+      <div class="model__img"><img src="${m.img}" alt="AI-generated concept image: RDM ${m.name} ${m.type.toLowerCase()}, side view" loading="lazy" width="1200" height="750"></div>
       <div class="model__body">
         <div class="model__meta"><span>0${i + 1}</span><span>${m.type}</span></div>
         <h3>RDM ${m.name}</h3>
         <p class="model__mean">${m.mean}</p>
         <p class="model__desc">${m.desc}</p>
         <div class="model__foot">
-          <span class="model__tag">${m.seats} · ${m.length} · Coming soon</span>
+          <span class="model__tag">Concept · Not for sale</span>
         </div>
       </div>
     </article>`).join('');
-
-  /* ---------- Test drive form ---------- */
-  const form = $('driveForm');
-  const msg = $('driveMsg');
-  form.addEventListener('submit', e => {
-    e.preventDefault();
-    const name = form.elements.name, email = form.elements.email;
-    const okName = name.value.trim().length > 1;
-    const okEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim());
-    name.classList.toggle('invalid', !okName);
-    email.classList.toggle('invalid', !okEmail);
-    if (!okName || !okEmail) {
-      msg.className = 'drive__msg err';
-      msg.textContent = 'Please add your name and a valid email.';
-      return;
-    }
-    const model = 'RDM ' + MODELS[form.elements.model.value].name;
-    msg.className = 'drive__msg ok';
-    msg.textContent = `Dziękujemy, ${name.value.trim().split(' ')[0]}! You'll be among the first to hear about the ${model}.`;
-    form.reset();
-  });
 
   /* ---------- Nav ---------- */
   const nav = document.querySelector('.nav');
@@ -83,7 +62,7 @@
   onScroll();
 
   /* ---------- Reveal on scroll ---------- */
-  document.querySelectorAll('.section__head, .timeline li, .tile, .explode__list li, .radom__stats div, .quote, .compare, .photo, .gallery figure, .explode__stage')
+  document.querySelectorAll('.section__head, .timeline li, .tile, .explode__list li, .radom__stats div, .quote, .compare, .photo, .gallery figure, .explode__stage, .concept__list li')
     .forEach(el => el.classList.add('reveal'));
   if (reduceMotion || !('IntersectionObserver' in window)) {
     document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
