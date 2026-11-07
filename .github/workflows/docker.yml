@@ -1,5 +1,5 @@
 # Builds the site image, smoke-tests it, publishes it to the GitHub Container Registry
-# (ghcr.io/dwzg/radom) and deploys it by pinning the new tag in github.com/dwzg/docker-compose.
+# (ghcr.io/dwzg/radom) and deploys it by pinning the new tag in github.com/dwzg/homelab.
 #
 # Tags pushed:
 #   sha-<short-sha>   every push to main and every v* tag
@@ -8,7 +8,7 @@
 # Pull requests only build and test.
 #
 # Optional secret (Settings → Secrets and variables → Actions):
-#   HOMELAB_DEPLOY_KEY      write deploy key for dwzg/docker-compose. The deploy job pins the
+#   HOMELAB_DEPLOY_KEY      write deploy key for dwzg/homelab. The deploy job pins the
 #                           new sha-<short> tag there and Arcane rolls it out. If unset, it is skipped.
 
 name: Docker image
@@ -95,7 +95,7 @@ jobs:
       - name: Short commit
         id: sha
         run: echo "short=${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
-      # Arcane deploys hosts/vps/radom from github.com/dwzg/docker-compose: pinning the new
+      # Arcane deploys hosts/vps/radom from github.com/dwzg/homelab: pinning the new
       # tag there is the deployment (live within ~5 minutes). Roll back by reverting that commit.
       - name: Deploy via the homelab repo
         env:
@@ -109,7 +109,7 @@ jobs:
           printf '%s\n' "$DEPLOY_KEY" > ~/.ssh/homelab && chmod 600 ~/.ssh/homelab
           ssh-keyscan -t ed25519 github.com >> ~/.ssh/known_hosts 2>/dev/null
           export GIT_SSH_COMMAND="ssh -i ~/.ssh/homelab -o IdentitiesOnly=yes"
-          git clone --quiet --depth 1 git@github.com:dwzg/docker-compose.git "$RUNNER_TEMP/homelab"
+          git clone --quiet --depth 1 git@github.com:dwzg/homelab.git "$RUNNER_TEMP/homelab"
           cd "$RUNNER_TEMP/homelab"
           file="hosts/vps/$STACK/compose.yaml"
           sed -i -E "s#(image: ${IMAGE}):[^[:space:]]+#\1:${TAG}#" "$file"
